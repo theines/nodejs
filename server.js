@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express() //saving express() to variable
 
+app.set('view engine', 'ejs')
+
 //setup route
 app.get('/', (req, res) => {
     console.log('here')
@@ -9,10 +11,10 @@ app.get('/', (req, res) => {
     //res.status(500).send('Oh yeah'); // 이렇게 위 두개를 묶어서 메세지를 넣을 수도
     //res.status(500).json({ message: "Error!!!!~~!~!"})
     //res.download("server.js") // 이렇게 다운로드도 시킬 수 있다
-    res.render("")
+    res.render('index')
 
 })
-
+ 
 //to actually run the server
 app.listen(3000) //portnumber
  
