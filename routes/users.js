@@ -4,20 +4,29 @@ const router = express.Router()
 router.use(logger)
 
 router.get('/', (req, res) => {
+    console.log(req.query.name)
     res.send('User List')
 })
 
 router.get('/new', (req, res) => {
-    res.send('User New Form')
+    res.render("users/new")
 })
 
 router.post('/', (req, res) => {
-    res.send('Create User')
+    const isValid = true
+    if (isValid) {
+        users.push({ firstName: req.body.firstname })
+        res.redirect(`/users/${users.length -1}`)
+    } else {
+        console.log("Error")
+        res.render("users/new", { firstName: req.body.firstName })
+    }
 })
 
 router
     .route("/:id")
     .get((req, res) => {
+        console.log(req.user)
         res.send(`Get User With ID ${req.params.id}`)//params.뒤에는 위의 파라미터명과 같아야함
     })
     .put((req, res) => {
