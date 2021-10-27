@@ -1,12 +1,9 @@
 const express = require('express')
 const app = express() 
 
-app.set('view engine', 'ejs')
+app.use(express.static("public"))
 
-app.get('/', (req, res) => {
-    console.log('here')
-    res.render('index', { text: "World" })
-})
+app.set('view engine', 'ejs')
 
 //linking the users route that I just made
 const userRouter = require('./routes/users')
